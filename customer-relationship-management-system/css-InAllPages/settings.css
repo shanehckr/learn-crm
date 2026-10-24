@@ -1,0 +1,544 @@
+/* Settings surface follows the CRM themes. */
+.settings-page {
+  --settings-primary: #156042;
+  --settings-primary-hover: #104b34;
+  --settings-surface: var(--card-bg, #ffffff);
+  --settings-text: var(--text-main, #0d1b17);
+  --settings-muted: var(--text-muted, #66736e);
+  --settings-border: var(--border-color, rgba(0, 0, 0, 0.1));
+  --settings-dropdown-border: rgba(13, 27, 23, 0.24);
+  color: var(--settings-text);
+  padding-bottom: 1.5rem;
+}
+
+html.dark-mode .settings-page {
+  --settings-dropdown-border: rgba(255, 255, 255, 0.24);
+}
+
+.settings-title {
+  color: var(--settings-text);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.settings-description,
+.settings-ui-notice {
+  color: var(--settings-muted);
+  font-size: 0.82rem;
+}
+
+.settings-tabs {
+  border-bottom-color: var(--settings-border);
+}
+
+.settings-tabs .nav-link {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--settings-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: -1px;
+  padding: 0.75rem 1rem;
+}
+
+.settings-tabs .nav-link:hover,
+.settings-tabs .nav-link:focus {
+  color: var(--settings-primary);
+}
+
+.settings-tabs .nav-link.active {
+  background: transparent;
+  border-bottom-color: var(--settings-primary);
+  color: var(--settings-primary);
+  font-weight: 600;
+}
+
+.settings-toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.settings-filter-dropdown {
+  flex: 0 0 10.5rem;
+  min-width: 0;
+  position: relative;
+  width: 10.5rem;
+}
+
+.settings-filter-dropdown:last-of-type {
+  flex-basis: 7.5rem;
+  width: 7.5rem;
+}
+
+.settings-filter-toggle,
+.settings-page .settings-filter-toggle {
+  align-items: center;
+  background-color: var(--settings-surface) !important;
+  border: 1px solid var(--settings-dropdown-border) !important;
+  border-radius: 16px !important;
+  color: var(--settings-text) !important;
+  font-size: 0.86rem !important;
+  font-weight: 500 !important;
+  height: 42px !important;
+  justify-content: space-between;
+  padding: 0.5rem 0.85rem !important;
+  text-align: left !important;
+  width: 100%;
+}
+
+.settings-filter-toggle:hover,
+.settings-filter-toggle:focus,
+.settings-filter-toggle[aria-expanded="true"] {
+  background-color: var(--settings-surface) !important;
+  border-color: var(--settings-primary) !important;
+  box-shadow: 0 0 0 1px var(--settings-primary) !important;
+  color: var(--settings-text) !important;
+}
+
+.settings-filter-toggle > i {
+  color: var(--settings-text);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  transition: transform 0.15s ease;
+}
+
+.settings-filter-toggle[aria-expanded="true"] > i {
+  transform: rotate(180deg);
+}
+
+.settings-page .settings-filter-menu,
+.settings-page .dropdown-menu.custom-dropdown-menu.settings-filter-menu {
+  background-color: var(--settings-surface) !important;
+  border: 1px solid var(--settings-dropdown-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2) !important;
+  left: 0 !important;
+  margin-top: 0.45rem !important;
+  min-width: 100% !important;
+  overflow: hidden;
+  padding: 0 !important;
+  right: auto !important;
+  width: 100% !important;
+}
+
+.settings-filter-menu .custom-dropdown-item {
+  color: var(--settings-text) !important;
+  font-size: 0.95rem !important;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem !important;
+}
+
+.settings-filter-menu .custom-dropdown-item:hover,
+.settings-filter-menu .custom-dropdown-item:focus {
+  background-color: rgba(21, 96, 66, 0.08) !important;
+  color: var(--settings-primary) !important;
+}
+
+.settings-filter-menu .custom-dropdown-item[aria-selected="true"] {
+  background-color: rgba(21, 96, 66, 0.1) !important;
+  color: var(--settings-primary) !important;
+  font-weight: 600 !important;
+}
+
+.settings-filter-value {
+  height: 1px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.settings-search {
+  flex: 1 1 auto;
+  min-width: 12rem;
+  width: 100%;
+}
+
+.settings-search .input-group-text,
+.settings-search .form-control,
+.settings-filter,
+.settings-role-picker .form-select {
+  background-color: var(--settings-surface);
+  border-color: var(--settings-border);
+  color: var(--settings-text);
+  min-height: 2.65rem;
+}
+
+/* Match dropdowns used on other CRM pages. */
+.settings-page .form-select {
+  background-color: var(--settings-surface);
+  border: 1px solid var(--settings-border);
+  border-radius: 12px;
+  color: var(--settings-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 42px;
+  min-height: 42px;
+  padding: 0.5rem 2.4rem 0.5rem 0.875rem;
+}
+
+.settings-page .form-select:focus {
+  border-color: var(--settings-border);
+  box-shadow: inset 0 0 0 1px var(--accent-green, #2bb673);
+  outline: 0;
+}
+
+.settings-page .form-select option {
+  background-color: var(--settings-surface);
+  color: var(--settings-text);
+}
+
+.settings-search .input-group-text {
+  border-right: 0;
+  color: var(--settings-muted);
+  padding-left: 0.9rem;
+}
+
+.settings-search .form-control {
+  border-left: 0;
+  font-size: 0.88rem;
+}
+
+.settings-search .form-control:focus {
+  border-color: var(--settings-primary);
+  box-shadow: 0 0 0 0.2rem rgba(21, 96, 66, 0.12);
+}
+
+.settings-primary-btn {
+  align-items: center;
+  background-color: var(--settings-primary);
+  border-color: var(--settings-primary);
+  color: #ffffff;
+  flex: 0 0 auto;
+  font-size: 0.86rem;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 2.65rem;
+  white-space: nowrap;
+  padding: 0.55rem 1rem;
+}
+
+.settings-primary-btn:hover,
+.settings-primary-btn:focus,
+.settings-primary-btn:active {
+  background-color: var(--settings-primary-hover) !important;
+  border-color: var(--settings-primary-hover) !important;
+  color: #ffffff !important;
+}
+
+.settings-secondary-btn {
+  background-color: var(--settings-surface);
+  border-color: var(--settings-border);
+  color: var(--settings-text);
+  font-weight: 500;
+}
+
+.settings-secondary-btn:hover,
+.settings-secondary-btn:focus {
+  background-color: rgba(127, 127, 127, 0.08);
+  border-color: var(--settings-border);
+  color: var(--settings-text);
+}
+
+.settings-table-card {
+  background-color: var(--settings-surface);
+  border: 1px solid var(--settings-border);
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.settings-table {
+  color: var(--settings-text);
+  font-size: 0.86rem;
+}
+
+#settings-users-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#settings-users-table .settings-column-username {
+  width: 17%;
+}
+
+#settings-users-table .settings-column-full-name {
+  width: 19%;
+}
+
+#settings-users-table .settings-column-email {
+  width: 24%;
+}
+
+#settings-users-table .settings-column-role {
+  width: 17%;
+}
+
+#settings-users-table .settings-column-status {
+  width: 11%;
+}
+
+#settings-users-table .settings-column-actions {
+  width: 12%;
+}
+
+.settings-table > :not(caption) > * > * {
+  background-color: transparent;
+  border-bottom-color: var(--settings-border);
+  color: inherit;
+  padding: 1rem 0.85rem;
+}
+
+.settings-table thead th {
+  color: var(--settings-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.85rem;
+  padding-top: 0.85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.settings-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.settings-table td {
+  vertical-align: middle;
+}
+
+.settings-empty-row > td {
+  padding: 0 !important;
+}
+
+.settings-empty-state {
+  color: var(--settings-muted);
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+
+.settings-empty-state > i {
+  color: var(--settings-primary);
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.settings-empty-state p:first-of-type {
+  color: var(--settings-text);
+}
+
+.settings-ui-notice {
+  border-top: 1px solid var(--settings-border);
+  padding: 0.75rem 0.9rem;
+}
+
+.settings-ui-notice i {
+  color: var(--settings-primary);
+}
+
+.settings-role-picker {
+  max-width: 17rem;
+}
+
+.settings-role-picker .form-label,
+.settings-modal-content .form-label {
+  color: var(--settings-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.settings-permission-table th:first-child,
+.settings-permission-table td:first-child {
+  width: 55%;
+}
+
+.settings-access-badge,
+.settings-denied-badge {
+  border-radius: 99rem;
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  min-width: 4rem;
+  padding: 0.25rem 0.65rem;
+  text-align: center;
+}
+
+.settings-access-badge {
+  background-color: #c6ead8;
+  color: #124b32;
+}
+
+.settings-denied-badge {
+  background-color: rgba(127, 127, 127, 0.12);
+  color: var(--settings-muted);
+}
+
+.settings-modal-dialog {
+  max-width: 27rem;
+}
+
+.settings-modal-content {
+  background-color: var(--settings-surface);
+  border: 1px solid var(--settings-border);
+  border-radius: 0.85rem;
+  color: var(--settings-text);
+  overflow: hidden;
+}
+
+.settings-modal-content .modal-header,
+.settings-modal-content .modal-footer {
+  border-color: var(--settings-border);
+  padding: 1rem 1.25rem;
+}
+
+.settings-modal-content .modal-title {
+  color: var(--settings-text);
+  font-size: 1.05rem !important;
+  font-weight: 700;
+}
+
+.settings-modal-content .modal-body {
+  padding: 1rem 1.25rem;
+}
+
+.settings-modal-content .form-control,
+.settings-modal-content .form-select {
+  background-color: var(--settings-surface);
+  border-color: var(--settings-border);
+  color: var(--settings-text);
+  min-height: 2.55rem;
+}
+
+.settings-modal-content .form-select {
+  height: 42px;
+  min-height: 42px;
+}
+
+.settings-modal-content .form-control:focus,
+.settings-modal-content .form-select:focus {
+  border-color: var(--settings-primary);
+  box-shadow: 0 0 0 0.2rem rgba(21, 96, 66, 0.12);
+}
+
+.settings-modal-content .form-control::placeholder {
+  color: var(--settings-muted);
+  opacity: 0.7;
+}
+
+.settings-modal-content .form-text {
+  color: var(--settings-muted);
+  font-size: 0.74rem;
+}
+
+.settings-password-group .form-control {
+  border-right: 0;
+}
+
+.settings-password-toggle {
+  background-color: var(--settings-surface);
+  border: 1px solid var(--settings-border);
+  border-left: 0;
+  color: var(--settings-muted);
+}
+
+.settings-password-toggle:hover,
+.settings-password-toggle:focus {
+  background-color: var(--settings-surface);
+  border-color: var(--settings-border);
+  color: var(--settings-primary);
+}
+
+.settings-account-details > div {
+  border-bottom: 1px solid var(--settings-border);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+}
+
+.settings-account-details > div:last-child {
+  border-bottom: 0;
+}
+
+.settings-account-details dt {
+  color: var(--settings-muted);
+  font-size: 0.84rem;
+}
+
+.settings-account-details dd {
+  color: var(--settings-text);
+  font-size: 0.84rem;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 767.98px) {
+  .settings-page {
+    padding-bottom: 1rem;
+  }
+
+  .settings-toolbar {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .settings-search {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .settings-filter-dropdown,
+  .settings-filter-dropdown:last-of-type {
+    flex: 1 1 calc(50% - 0.35rem);
+    width: auto;
+  }
+
+  .settings-toolbar > .settings-primary-btn {
+    flex: 1 1 100%;
+  }
+
+  .settings-table {
+    min-width: 42rem;
+  }
+
+  .settings-permission-table {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .settings-toolbar {
+    gap: 0.5rem;
+  }
+
+  .settings-search {
+    min-width: 9rem;
+  }
+
+  .settings-filter-dropdown {
+    flex-basis: 8.5rem;
+    width: 8.5rem;
+  }
+
+  .settings-filter-dropdown:last-of-type {
+    flex-basis: 7rem;
+    width: 7rem;
+  }
+
+  .settings-toolbar > .settings-primary-btn {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+}

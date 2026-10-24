@@ -1,0 +1,57 @@
+<main class="content-body p-3 p-md-4 flex-grow-1 crm-dashboard" data-crm-dashboard data-dashboard-role="customer-service">
+  <div class="mb-4">
+    <h2 class="fw-bold m-0 text-uppercase">Dashboard</h2>
+    <p class="text-muted small m-0" id="currentDashboardDate"></p>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-xl-3"><div class="card border-0 shadow-sm p-3 rounded-4 h-100"><span class="stat-label d-block mb-1">Open Tickets</span><div class="stat-number" data-metric="open_tickets">—</div></div></div>
+    <div class="col-12 col-sm-6 col-xl-3"><div class="card border-0 shadow-sm p-3 rounded-4 h-100"><span class="stat-label d-block mb-1">Pending Tickets</span><div class="stat-number" data-metric="pending_tickets">—</div></div></div>
+    <div class="col-12 col-sm-6 col-xl-3"><div class="card border-0 shadow-sm p-3 rounded-4 h-100"><span class="stat-label d-block mb-1">Resolved Tickets</span><div class="stat-number" data-metric="resolved_tickets">—</div></div></div>
+    <div class="col-12 col-sm-6 col-xl-3"><div class="card border-0 shadow-sm p-3 rounded-4 h-100"><span class="stat-label d-block mb-1">Upcoming Follow-ups</span><div class="stat-number" data-metric="upcoming_followups">—</div></div></div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-lg-5">
+      <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="fw-bold m-0">Ticket Overview</h5>
+          <a href="ticket.html" class="btn btn-sm btn-outline-secondary">View All</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead><tr><th>Ticket</th><th>Customer</th><th>Status</th><th>Priority</th></tr></thead>
+            <tbody data-dashboard-table="ticket_overview"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <div class="col-12 col-lg-7">
+      <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="fw-bold m-0">Upcoming Follow-ups</h5>
+          <a href="activities.html" class="btn btn-sm btn-outline-secondary">View All</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead><tr><th>Customer</th><th>Follow-up</th><th>Due Date</th><th>Status</th></tr></thead>
+            <tbody data-dashboard-table="upcoming_followups_list"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="fw-bold m-0">Recently Updated Records</h5>
+      <a href="ticket.html" class="btn btn-sm btn-outline-secondary">View All</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr><th>Ticket Identifier</th><th>Customer</th><th>Subject</th><th>Status</th><th>Priority</th><th>Last Updated</th></tr></thead>
+        <tbody data-dashboard-table="recent_tickets"></tbody>
+      </table>
+    </div>
+  </section>
+</main>

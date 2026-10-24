@@ -1,0 +1,964 @@
+/* Keep scrolling inside the page content. */
+
+html {
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+body {
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Shared page styles. */
+
+/* Page headers */
+.content-body h2 {
+  font-size: 20px !important;
+  letter-spacing: 0.5px;
+  color: var(--text-main) !important;
+}
+
+.content-body p.text-muted {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.card h5,
+.card .h5 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+}
+
+/* Summary cards */
+.card .stat-label {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  color: var(--text-muted) !important;
+  text-transform: uppercase;
+}
+
+.card .stat-number {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--text-main) !important;
+  line-height: 1.2;
+}
+
+/* Horizontal table scrolling */
+.table-responsive {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 4px !important;
+  width: 4px !important;
+  background: transparent !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 10px !important;
+  transition: background 0.3s ease;
+}
+
+.table-responsive:hover {
+  scrollbar-color: rgba(43, 182, 115, 0.5) transparent !important;
+}
+
+.table-responsive:hover::-webkit-scrollbar-thumb {
+  background: rgba(43, 182, 115, 0.6) !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #2bb673 !important;
+}
+
+/* Shared module tables */
+
+.table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: var(--text-main) !important;
+  color: var(--text-main) !important;
+  background-color: transparent !important;
+}
+
+.table-light,
+.table-light th,
+.table thead th {
+  --bs-table-bg: transparent !important;
+  background-color: transparent !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
+.table tbody tr,
+.table tbody td {
+  --bs-table-bg: transparent !important;
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  font-size: 13px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  vertical-align: middle !important;
+}
+
+/* Outline action buttons */
+.btn-outline-secondary.btn-sm,
+.card .btn-sm {
+  font-size: 12px !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border-color) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--accent-green) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-green) !important;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 6px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-badge.status-upcoming {
+  background-color: #dbeafe !important;
+  color: #1e3a8a !important;
+}
+
+.status-badge.status-in-progress {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.status-badge.status-cancelled {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+.status-badge.status-completed {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+/* Contact and module filters */
+
+.table-search-input {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  height: 42px !important;
+  font-size: 14px !important;
+}
+
+.table-search-input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.7;
+}
+
+.table-search-input:focus {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--accent-green) !important;
+  box-shadow: inset 0 0 0 1px var(--accent-green) !important;
+}
+
+.search-icon {
+  color: var(--text-muted) !important;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Table actions */
+.action-btn-edit,
+.action-btn-view {
+  color: var(--text-main) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: opacity 0.2s ease;
+}
+
+.action-btn-edit:hover,
+.action-btn-view:hover {
+  color: var(--accent-green) !important;
+}
+
+.action-btn-delete {
+  color: #ff4d4f !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: opacity 0.2s ease;
+}
+
+.action-btn-delete:hover {
+  color: #d9363e !important;
+  text-decoration: underline !important;
+}
+
+/* Dropdown controls */
+
+.dropdown-menu.custom-dropdown-menu,
+html.dark-mode .dropdown-menu.custom-dropdown-menu {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+  box-sizing: border-box !important;
+  overflow: hidden;
+}
+
+.content-body .d-flex .dropdown {
+  position: relative !important;
+  display: inline-block !important;
+  width: auto !important;
+}
+
+.staff-filter-dropdown {
+  position: relative !important;
+  min-width: 150px !important;
+  width: auto !important;
+}
+
+.content-body .d-flex .dropdown .dropdown-menu.custom-dropdown-menu {
+  min-width: 100% !important;
+  width: max-content !important;
+  max-width: 260px !important;
+  left: 0 !important;
+  right: auto !important;
+  margin-top: 4px !important;
+  /* Keep long staff and customer lists scrollable. */
+  max-height: 260px !important;
+  overflow-y: auto !important;
+}
+
+.custom-dropdown-toggle {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  height: 42px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+}
+
+.custom-dropdown-toggle:focus {
+  box-shadow: inset 0 0 0 1px var(--accent-green) !important;
+}
+
+/* Disable the Related Lead dropdown until a customer is selected. */
+.custom-dropdown-toggle:disabled,
+.custom-dropdown-toggle.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Highlight an empty required dropdown populated by pages.js. */
+.custom-dropdown-toggle.dd-invalid {
+  border-color: #ff4d4f !important;
+}
+
+/* Modal scrolling */
+
+.modal-content.custom-modal-card {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: 85vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: visible !important;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+  flex-shrink: 0 !important;
+}
+
+.modal-dialog-scrollable .modal-body,
+.custom-dropdown-menu {
+  overflow-y: auto !important;
+  flex-grow: 1 !important;
+  max-height: none !important;
+  overflow-x: visible !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.modal-dialog-scrollable .modal-body::-webkit-scrollbar,
+.custom-dropdown-menu::-webkit-scrollbar {
+  width: 4px !important;
+  background: transparent !important;
+}
+
+.modal-dialog-scrollable .modal-body::-webkit-scrollbar-thumb,
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 10px !important;
+  transition: background 0.3s ease;
+}
+
+.modal-dialog-scrollable .modal-body:hover,
+.custom-dropdown-menu:hover {
+  scrollbar-color: rgba(43, 182, 115, 0.5) transparent !important;
+}
+
+.modal-dialog-scrollable .modal-body:hover::-webkit-scrollbar-thumb,
+.custom-dropdown-menu:hover::-webkit-scrollbar-thumb {
+  background: rgba(43, 182, 115, 0.6) !important;
+}
+
+.modal-dialog-scrollable .modal-body::-webkit-scrollbar-thumb:hover,
+.custom-dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: #2bb673 !important;
+}
+
+.modal-body .dropdown,
+.modal-dialog .dropdown {
+  position: relative !important;
+  width: 100% !important;
+}
+
+.modal-body .custom-dropdown-toggle.modal-dropdown-pill {
+  border-radius: 50px !important;
+  padding-left: 18px !important;
+  padding-right: 16px !important;
+}
+
+.modal-body .dropdown-menu.custom-dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  bottom: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  max-height: 180px !important;
+  z-index: 1070 !important;
+  margin-top: 4px !important;
+  transform: none !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+  box-sizing: border-box !important;
+}
+
+.custom-dropdown-item {
+  color: var(--text-main) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 10px 16px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background-color: transparent !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.custom-dropdown-menu li:last-child .custom-dropdown-item {
+  border-bottom: none !important;
+}
+
+.custom-dropdown-item:hover,
+.custom-dropdown-item:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--accent-green) !important;
+}
+
+html.light-mode .custom-dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: #000000 !important;
+}
+
+/* Modal layout and close button */
+
+.modal-dialog {
+  max-width: 480px !important;
+  width: 90% !important;
+}
+
+.custom-modal-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  padding: 12px 16px !important;
+}
+
+.custom-modal-card .modal-title,
+.custom-modal-card .modal-heading-text {
+  color: var(--text-main) !important;
+}
+
+.custom-modal-card .modal-delete-text {
+  color: var(--text-muted) !important;
+}
+
+/* Names in delete and discard messages */
+.custom-modal-card .text-highlight {
+  color: var(--text-main) !important;
+}
+
+html.dark-mode .custom-modal-card .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%) !important;
+  opacity: 0.85 !important;
+}
+
+html.light-mode .custom-modal-card .btn-close {
+  filter: none !important;
+  opacity: 0.85 !important;
+}
+
+.modal-section-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  color: var(--accent-green, #2bb673) !important;
+}
+
+.modal-input-label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 4px !important;
+}
+
+/* Modal fields */
+.modal-input-field {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50px !important;
+  text-align: left !important;
+  padding: 8px 18px !important;
+  font-size: 14px !important;
+  height: 42px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+
+.modal-input-field::placeholder,
+textarea.modal-input-field::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.85 !important;
+}
+
+textarea.modal-input-field {
+  resize: none !important;
+  height: auto !important;
+  min-height: 100px !important;
+  border-radius: 20px !important;
+  padding: 14px 18px !important;
+}
+
+input[type="date"].modal-input-field {
+  appearance: none;
+  -webkit-appearance: none;
+  color-scheme: dark;
+}
+
+html.light-mode input[type="date"].modal-input-field {
+  color-scheme: light;
+}
+
+.modal-input-field:focus {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--accent-green) !important;
+  box-shadow: inset 0 0 0 1px var(--accent-green) !important;
+}
+
+/* Read-only fields */
+.modal-input-field[readonly] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Hide spinners on numeric fields. */
+input[type="number"].modal-input-field {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"].modal-input-field::-webkit-outer-spin-button,
+input[type="number"].modal-input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Modal buttons */
+.modal-btn-cancel {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  height: 40px !important;
+  transition: all 0.2s ease !important;
+}
+
+.modal-btn-cancel:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  color: var(--text-main) !important;
+}
+
+html.dark-mode .modal-btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal-btn-save {
+  background-color: #2bb673 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 40px !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer;
+}
+
+.modal-btn-save:hover,
+.modal-btn-save:focus {
+  background-color: #3bb582 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(43, 182, 115, 0.35) !important;
+}
+
+.modal-btn-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 40px !important;
+  transition: all 0.2s ease !important;
+}
+
+.modal-btn-white:hover {
+  background-color: #e5e7eb !important;
+  color: #000000 !important;
+}
+
+.modal-btn-danger {
+  background-color: #ff0015 !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 40px !important;
+  border: none !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer;
+}
+
+.modal-btn-danger:hover,
+.modal-btn-danger:focus {
+  background-color: #d90012 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(255, 0, 21, 0.35) !important;
+}
+
+.modal-btn-save:active,
+.modal-btn-danger:active {
+  transform: scale(0.98);
+}
+
+/* Badges, tables, dashboard stages, and progress bars */
+
+.card .mb-3,
+.card .mb-4,
+.card .d-flex.flex-column {
+  gap: 16px !important;
+}
+
+.progress,
+.card .progress {
+  height: 8px !important;
+  border-radius: 10px !important;
+  background-color: rgba(43, 182, 115, 0.12) !important;
+  overflow: hidden;
+  margin-top: 6px !important;
+  margin-bottom: 12px !important;
+}
+
+.progress-bar,
+.card .progress-bar,
+.bg-primary {
+  background-color: #2bb673 !important;
+  border-radius: 10px !important;
+}
+
+.type-pill {
+  display: inline-block;
+  padding: 3px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+}
+
+.type-lead {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+.type-deal {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+/* Ticket and lead/deal detail modals */
+
+.view-details-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.view-field-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.view-field-label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--text-main) !important;
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* Detail values and badges */
+.view-field-value,
+.view-field-block > div {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px !important;
+  background-color: transparent;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  box-sizing: border-box;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.5;
+  color: var(--text-main) !important;
+  word-break: break-word !important;
+}
+
+/* Ticket number */
+#viewTicketNo {
+  color: var(--accent-green, #2bb673) !important;
+  font-weight: 600 !important;
+}
+
+/* Divider between ticket and customer details */
+.view-details-stack .modal-section-title.mt-2 {
+  margin-top: 8px !important;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+}
+
+.stage-pill {
+  display: inline-block;
+  padding: 4px 14px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Stage colors match the classes assigned in pages.js. */
+.stage-negotiation {
+  background-color: #f3e8ff !important;
+  color: #6b21a8 !important;
+}
+
+.stage-qualified {
+  background-color: #dbeafe !important;
+  color: #1e3a8a !important;
+}
+
+.stage-proposal {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+.stage-won {
+  background-color: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+.stage-new {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.stage-loss {
+  background-color: #fee2e2 !important;
+  color: #dc2626 !important;
+}
+
+/* Responsive layouts */
+
+@media (max-width: 768px) {
+
+  /* Stack the search above the filter controls. */
+  .content-body .d-flex.flex-column.flex-sm-row,
+  .content-body .d-flex.flex-column.flex-lg-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .table-search-input {
+    width: 100% !important;
+  }
+
+  /* Expand the staff dropdown on the Contacts page. */
+  .staff-filter-dropdown,
+  .staff-filter-dropdown .custom-dropdown-toggle {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* Keep lead/deal filters and actions evenly spaced. */
+  .content-body .d-flex.flex-wrap.flex-sm-nowrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .content-body .d-flex.flex-wrap.flex-sm-nowrap > .dropdown {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .content-body .d-flex.flex-wrap.flex-sm-nowrap .custom-dropdown-toggle {
+    width: 100% !important;
+  }
+
+  .content-body .d-flex.flex-wrap.flex-sm-nowrap > .modal-btn-save {
+    width: 100% !important;
+    height: 42px !important;
+  }
+
+  /* Keep table columns on one line and allow horizontal scrolling. */
+  .table-responsive .table th,
+  .table-responsive .table td {
+    white-space: nowrap !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .card.p-3 {
+    padding: 12px !important;
+  }
+
+  /* Center modals with equal side spacing. */
+  .modal-dialog {
+    width: calc(100% - 24px) !important;
+    max-width: 480px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .custom-modal-card {
+    border-radius: 16px !important;
+    margin: 0 !important;
+  }
+
+  .modal-dialog-centered {
+    min-height: calc(100% - 24px);
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Ticket status and priority badges */
+.ticket-badge {
+  display: inline-block;
+  padding: 3px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  white-space: nowrap;
+}
+.ticket-open, .ticket-high       { background-color: #fee2e2 !important; color: #991b1b !important; }
+.ticket-pending, .ticket-medium  { background-color: #fef3c7 !important; color: #92400e !important; }
+.ticket-resolved, .ticket-low    { background-color: #d1fae5 !important; color: #065f46 !important; }
+
+.char-count { color: var(--text-muted) !important; }
+
+/* Deletion is Admin-only by default; Activities also allows Managers. */
+html:not(.role-admin) .action-btn-delete {
+  display: none !important;
+}
+html.role-manager #activitiesTable .action-btn-delete {
+  display: inline !important;
+}
+.activity-overdue-row > td {
+  background-color: rgba(220, 53, 69, 0.06) !important;
+}
+.activity-overdue-label {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background-color: rgba(220, 53, 69, 0.12);
+  color: #b02a37;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+#activitiesTable {
+  width: 100%;
+  min-width: 760px;
+  table-layout: fixed;
+}
+#activitiesTable th,
+#activitiesTable td {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  vertical-align: middle;
+}
+#activitiesTable thead th {
+  white-space: normal;
+  line-height: 1.3;
+}
+#activitiesTable .activity-name-cell,
+#activitiesTable .activity-customer-cell,
+#activitiesTable .activity-staff-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+#activitiesTable .activity-related-cell {
+  display: table-cell;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+#activitiesTable .activity-due-date-cell {
+  white-space: normal !important;
+}
+#activitiesTable .activity-due-date-cell > * {
+  margin-right: 0.25rem;
+}
+#activitiesTable .activity-overdue-label {
+  margin-right: 0;
+}
+#activitiesTable .activity-actions-cell {
+  white-space: normal !important;
+}
+#activitiesTable .activity-actions-cell > div {
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem !important;
+}
+#activitiesTable .activity-actions-cell .btn {
+  white-space: nowrap;
+}
+.crm-dashboard .card {
+  min-width: 0;
+}
+.crm-dashboard-stage-list li {
+  margin-bottom: 0.9rem;
+}
+.crm-dashboard-stage-list li:last-child {
+  margin-bottom: 0;
+}
+.crm-dashboard-stage-list .progress {
+  height: 7px;
+  margin-top: 0.45rem;
+  margin-bottom: 0 !important;
+}
+.crm-dashboard-stage-list .crm-status-open {
+  background-color: #dc3545;
+}
+.crm-dashboard-stage-list .crm-status-pending {
+  background-color: #f0ad00;
+}
+.crm-dashboard-stage-list .crm-status-resolved {
+  background-color: #198754;
+}
+.crm-dashboard .table {
+  min-width: 620px;
+}
+.crm-dashboard-badge {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--accent-green);
+  color: var(--text-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.crm-dashboard-badge--open {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+.crm-dashboard-badge--pending,
+.crm-dashboard-badge--upcoming {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.crm-dashboard-badge--resolved {
+  background-color: #d1fae5;
+  color: #065f46;
+}

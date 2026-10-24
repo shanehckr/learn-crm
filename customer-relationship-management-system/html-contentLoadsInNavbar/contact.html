@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Contacts Directory</title>
+  <!-- Apply the saved theme before the page renders. -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const themeToApply = savedTheme || (prefersDark ? 'dark-mode' : 'light-mode');
+      document.documentElement.className = themeToApply;
+      document.documentElement.style.backgroundColor = (themeToApply === 'light-mode') ? '#ffffff' : '#050d0a';
+    })();
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="stylesheet-login.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="adminpages.css">
+   
+</head>
+
+<body>
+
+  <main class="content-body p-3 p-md-4 flex-grow-1">
+    <div class="mb-4">
+      <h2 class="fw-bold m-0 text-uppercase">CONTACTS</h2>
+    </div>
+
+    <div
+      class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center justify-content-between gap-3 mb-3 w-100">
+      <div class="position-relative flex-grow-1">
+        <i class="bi bi-search search-icon position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+        <input type="text" class="form-control table-search-input ps-5" id="contactsSearchInput"
+          placeholder="Search Contacts...">
+      </div>
+
+      <div class="dropdown staff-filter-dropdown">
+        <button
+          class="btn custom-dropdown-toggle d-flex align-items-center justify-content-between rounded-3 px-3 py-2 w-100"
+          type="button" id="staffFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="selectedStaffLabel" class="text-truncate me-2">Staff</span>
+          <i class="bi bi-chevron-down small"></i>
+        </button>
+        <ul class="dropdown-menu custom-dropdown-menu shadow-sm border-0 p-0 overflow-hidden mt-1"
+          aria-labelledby="staffFilterDropdown" id="staffFilterDropdownList">
+          <li><a class="dropdown-item custom-dropdown-item py-2 px-3" href="#">All Staff</a></li>
+          <!-- Staff options come from the Contacts API. -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- pages.js loads contact rows from the Contacts API. -->
+    <div class="card border-0 shadow-sm rounded-4 p-3 p-md-4 w-100 mb-4">
+      <div class="table-responsive">
+        <table class="table align-middle mb-0" id="contactsTable">
+          <thead class="table-light text-uppercase small">
+            <tr>
+              <th>CUSTOMER</th>
+              <th>EMAIL</th>
+              <th>CONTACT NUMBER</th>
+              <th>ASSIGNED STAFF</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- The Contacts API handles these forms; the selected row provides the record ID. -->
+
+  <div class="modal fade" id="editCustomerModal" tabindex="-1" aria-labelledby="editCustomerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal-card p-3">
+        <div class="modal-header border-bottom border-secondary border-opacity-25 pb-2 mb-2">
+          <h5 class="modal-title fw-bold fs-6" id="editCustomerModalLabel">Edit Customer</h5>
+          <button type="button" class="btn-close ms-auto shadow-none scale-75" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 my-2">
+          <form id="editCustomerForm" method="POST" action="update_contact.php">
+            <input type="hidden" name="id">
+
+            <div class="mb-3">
+              <label class="form-label modal-input-label" for="editContactName">Customer Name <span
+                  class="text-danger">*</span></label>
+              <input type="text" class="form-control modal-input-field" id="editContactName" name="customer_name" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label modal-input-label" for="editContactEmail">Email <span
+                  class="text-danger">*</span></label>
+              <input type="email" class="form-control modal-input-field" id="editContactEmail" name="email" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label modal-input-label" for="editContactPhone">Phone <span
+                  class="text-danger">*</span></label>
+              <input type="text" class="form-control modal-input-field phone-input-field" id="editContactPhone"
+                name="phone" value="+63 " inputmode="numeric" pattern="\+63 \d{10}"
+                title="Enter a 10-digit mobile number, e.g. +63 9171234567" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label modal-input-label d-block">Assigned Staff <span
+                  class="text-danger">*</span></label>
+              <div class="dropdown staff-filter-dropdown w-100" data-field="staff_id" data-required="true">
+                <button
+                  class="btn custom-dropdown-toggle modal-dropdown-pill d-flex align-items-center justify-content-between px-3 py-2 w-100"
+                  type="button" id="editModalStaffDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span id="editModalSelectedStaffLabel" class="text-truncate me-2">Select staff</span>
+                  <i class="bi bi-chevron-down small"></i>
+                </button>
+                <ul class="dropdown-menu custom-dropdown-menu shadow-sm border-0 p-0 overflow-hidden mt-1"
+                  aria-labelledby="editModalStaffDropdown" id="editModalStaffDropdownList">
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          class="modal-footer border-top border-secondary border-opacity-25 pt-2 mt-2 d-flex justify-content-end gap-2">
+          <button type="button" class="btn modal-btn-cancel px-3 js-edit-cancel"
+            data-edit-modal="editCustomerModal" data-discard-modal="discardChangesModal">Cancel</button>
+          <button type="submit" form="editCustomerForm" class="btn modal-btn-save px-3">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="discardChangesModal" tabindex="-1" aria-labelledby="discardChangesModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal-card p-3">
+        <div class="modal-body px-2 py-2">
+          <h5 class="fw-bold fs-5 mb-2 modal-heading-text" id="discardChangesModalLabel">Discard changes?</h5>
+          <p class="modal-delete-text fs-6 mb-4">
+            You have unsaved changes to <strong class="fw-bold text-highlight"></strong>. Are you sure you want to
+            discard them?
+          </p>
+          <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 gap-sm-3 mt-3">
+            <button type="button" class="btn modal-btn-white px-4 py-2" data-bs-toggle="modal"
+              data-bs-target="#editCustomerModal">Keep Edit</button>
+            <button type="button" class="btn modal-btn-danger px-4 py-2" data-bs-dismiss="modal">Discard
+              Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal-card p-3">
+        <form id="deleteContactForm" method="POST" action="delete_contact.php">
+          <input type="hidden" name="id">
+          <div class="modal-body px-2 py-2">
+            <h5 class="fw-bold fs-5 mb-2 modal-heading-text" id="deleteContactModalLabel">Delete Contact</h5>
+            <p class="modal-delete-text fs-6 mb-4">
+              Are you sure you want to delete <strong class="fw-bold text-highlight"></strong>? This action cannot
+              be undone.
+            </p>
+            <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 gap-sm-3 mt-3">
+              <button type="button" class="btn modal-btn-white px-4 py-2" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn modal-btn-danger px-4 py-2">Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="loading.js"></script>
+  <script src="pages.js"></script>
+  <script src="navbar.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<main class="content-body p-3 p-md-4 flex-grow-1 crm-dashboard" data-crm-dashboard data-dashboard-role="manager">
+  <div class="mb-4">
+    <h2 class="fw-bold m-0 text-uppercase">Dashboard</h2>
+    <p class="text-muted small m-0" id="currentDashboardDate"></p>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-sm-6 col-xl-3">
+      <div class="card border-0 shadow-sm p-3 rounded-4 h-100">
+        <span class="stat-label d-block mb-1">Total Leads</span>
+        <div class="stat-number" data-metric="total_leads">—</div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3">
+      <div class="card border-0 shadow-sm p-3 rounded-4 h-100">
+        <span class="stat-label d-block mb-1">Active Deals</span>
+        <div class="stat-number" data-metric="active_deals">—</div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3">
+      <div class="card border-0 shadow-sm p-3 rounded-4 h-100">
+        <span class="stat-label d-block mb-1">Confirmed Deals</span>
+        <div class="stat-number" data-metric="confirmed_deals">—</div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3">
+      <div class="card border-0 shadow-sm p-3 rounded-4 h-100">
+        <span class="stat-label d-block mb-1">Open Tickets</span>
+        <div class="stat-number" data-metric="open_tickets">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-lg-6">
+      <div class="card border-0 shadow-sm p-3 p-md-4 rounded-4 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="fw-bold m-0">Leads by Stage</h5>
+          <a href="leadsanddeals.html" class="btn btn-sm btn-outline-secondary">View All</a>
+        </div>
+        <ul class="list-unstyled stage-list crm-dashboard-stage-list" data-stage-group="lead_stages">
+          <li><div class="d-flex justify-content-between"><span class="stage-name">New Inquiry</span><span class="stage-count" data-stage-count="New Inquiry">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">In Progress</span><span class="stage-count" data-stage-count="In Progress">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">In Discussion</span><span class="stage-count" data-stage-count="In Discussion">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Declined</span><span class="stage-count" data-stage-count="Declined">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card border-0 shadow-sm p-3 p-md-4 rounded-4 h-100">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="fw-bold m-0">Deals by Stage</h5>
+          <a href="leadsanddeals.html" class="btn btn-sm btn-outline-secondary">View All</a>
+        </div>
+        <ul class="list-unstyled stage-list crm-dashboard-stage-list" data-stage-group="deal_stages">
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Quotation Preparation</span><span class="stage-count" data-stage-count="Quotation Preparation">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Quotation Sent</span><span class="stage-count" data-stage-count="Quotation Sent">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Negotiation</span><span class="stage-count" data-stage-count="Negotiation">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Confirmed</span><span class="stage-count" data-stage-count="Confirmed">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+          <li><div class="d-flex justify-content-between"><span class="stage-name">Declined</span><span class="stage-count" data-stage-count="Declined">—</span></div><div class="progress"><div class="progress-bar" role="progressbar"></div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4 mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="fw-bold m-0">Tickets by Status</h5>
+      <a href="ticket.html" class="btn btn-sm btn-outline-secondary">View All</a>
+    </div>
+    <ul class="list-unstyled stage-list crm-dashboard-stage-list mb-0" data-stage-group="ticket_statuses">
+      <li><div class="d-flex justify-content-between"><span class="stage-name">Open</span><span class="stage-count" data-stage-count="Open">—</span></div><div class="progress"><div class="progress-bar crm-status-open" role="progressbar"></div></div></li>
+      <li><div class="d-flex justify-content-between"><span class="stage-name">Pending</span><span class="stage-count" data-stage-count="Pending">—</span></div><div class="progress"><div class="progress-bar crm-status-pending" role="progressbar"></div></div></li>
+      <li><div class="d-flex justify-content-between"><span class="stage-name">Resolved</span><span class="stage-count" data-stage-count="Resolved">—</span></div><div class="progress"><div class="progress-bar crm-status-resolved" role="progressbar"></div></div></li>
+    </ul>
+  </section>
+
+  <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4 mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="fw-bold m-0">Upcoming Activities</h5>
+      <a href="activities.html" class="btn btn-sm btn-outline-secondary">View All</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr><th>Activity Name</th><th>Related Record</th><th>Assigned Staff</th><th>Due Date</th><th>Status</th></tr></thead>
+        <tbody data-dashboard-table="upcoming_activities"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card border-0 shadow-sm p-3 p-md-4 rounded-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="fw-bold m-0">Recent Confirmed Deals</h5>
+      <a href="leadsanddeals.html" class="btn btn-sm btn-outline-secondary">View All</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr><th>Inquiry/Event Name</th><th>Customer</th><th>Assigned Staff</th><th>Quotation Amount</th><th>Date Created</th></tr></thead>
+        <tbody data-dashboard-table="confirmed_deals_list"></tbody>
+      </table>
+    </div>
+  </section>
+</main>

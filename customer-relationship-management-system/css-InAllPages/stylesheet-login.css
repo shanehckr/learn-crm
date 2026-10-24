@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Colors */
+:root {
+  --bg-color: #0d1b17;
+  --panel-bg: #092017;
+  --text-main: #ffffff;
+  --text-muted: #a0b2aa;
+  --label-color: #d1ded8;
+  --input-bg: #17382B;
+  --input-border: #2bb673;
+  --input-text: #FFFAFA;
+  --welcome-bg-image: url('../backgroundPicture/background-darkmode.png');
+  --welcome-label-color: #8faeal;
+  --welcome-title-color: #ffffff;
+  --welcome-desc-color: #c0d3cb;
+  --mobile-dark-log: #ffffff;
+  --mobile-dark-in: #2bb673;
+  --mobile-dark-subtext: #a0b2aa;
+  --mobile-dark-label: #FFFAFA;
+  --mobile-dark-forgot: #2bb673;
+  --mobile-light-log: #000000;
+  --mobile-light-in: #2bb673;
+  --mobile-light-subtext: #FFFAFA;
+  --mobile-light-label: #FFFAFA;
+}
+
+html.light-mode {
+  --bg-color: #FFFAFA;
+  --panel-bg: #ffffff;
+  --text-main: #0d1b17;
+  --text-muted: #707070;
+  --label-color: #000000;
+  --input-bg: #ffffff;
+  --input-border: #2bb673;
+  --input-text: #0d1b17;
+  --welcome-bg-image: url('../backgroundPicture/background-lightmode.png');
+  --welcome-label-color: #8faeal;
+  --welcome-title-color: #ffffff;
+  --welcome-desc-color: #c0d3cb;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  transition: background-color 0.2s ease;
+}
+
+/* Login card */
+.login-container {
+  max-width: 1100px;
+  height: 600px;
+  background-color: var(--panel-bg);
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-panel {
+  order: 2;
+  padding: 100px 45px;
+  color: #ffffff;
+  background-image: var(--welcome-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.welcome-label {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--welcome-label-color);
+}
+
+.welcome-panel h2 {
+  font-size: 30px;
+  line-height: 1.3;
+  color: var(--welcome-title-color);
+}
+
+.accent {
+  width: 60px;
+  height: 6px;
+  background-color: #2bb673;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--welcome-desc-color);
+}
+
+.login-panel {
+  order: 1;
+  flex: 0 0 45%;
+  height: 100%;
+  padding: 40px 45px;
+  background-color: var(--panel-bg);
+  color: var(--text-main);
+}
+
+.form-content {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+html.preload-transition .form-content {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.form-content.fade-in {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  top: 28px;
+  left: calc(45% - 50px);
+  z-index: 20;
+}
+
+.theme-toggle img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover img {
+  transform: scale(1.1);
+}
+
+html.dark-mode .moon-icon { display: none; }
+html.dark-mode .sun-icon { display: block; }
+html.light-mode .sun-icon { display: none; }
+html.light-mode .moon-icon { display: block; }
+
+/* Form fields */
+.login-panel h1 {
+  font-size: 32px;
+  color: var(--text-main);
+}
+
+.login-panel h1 .in-word,
+.login-panel h1 .password-word {
+  color: #2bb673;
+}
+
+.reset-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.forgot,
+.back-link {
+  color: #2bb673;
+  text-decoration: none;
+  font-size: 13px;
+  transition: opacity 0.2s ease;
+}
+
+.forgot:hover,
+.back-link:hover {
+  opacity: 0.8;
+}
+
+/* Scope form styles to the login panel. */
+.login-panel form label {
+  font-size: 13px;
+  color: var(--label-color);
+  margin-bottom: 8px;
+}
+
+.login-panel form input.form-control,
+.login-panel form input {
+  height: 46px !important;
+  border: 1px solid var(--input-border) !important;
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-radius: 20px !important;
+  padding-left: 48px !important;
+  padding-right: 20px !important;
+  font-size: 14px !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html.light-mode .login-panel form input.form-control,
+html.light-mode .login-panel form input {
+  background-color: #ffffff !important;
+  color: #0d1b17 !important;
+}
+
+.login-panel .password-wrapper input.form-control,
+.login-panel .password-wrapper input {
+  padding-right: 50px !important;
+}
+
+.input-icon {
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.toggle-password {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.toggle-password img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.toggle-password .eye-open-icon { display: none; }
+.toggle-password.visible .eye-closed-icon { display: none; }
+.toggle-password.visible .eye-open-icon { display: block; }
+
+/* Login panel buttons */
+.login-panel form button[type="submit"],
+.login-panel .btn-submit {
+  width: 100% !important;
+  height: 46px !important;
+  background: #23a063 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 30px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s ease !important;
+}
+
+.login-panel form button[type="submit"]:hover,
+.login-panel .btn-submit:hover {
+  background: #2bb673 !important;
+  color: #ffffff !important;
+}
+
+html.dark-mode .login-panel form input::placeholder {
+  color: #FFFAFA !important;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 420px;
+    height: auto;
+    border-radius: 20px !important;
+    background-image: var(--welcome-bg-image);
+    background-size: cover;
+    background-position: center;
+    padding: 40px 24px 36px 24px;
+  }
+
+  .theme-toggle {
+    top: 24px;
+    left: auto;
+    right: 24px;
+  }
+
+  .welcome-panel {
+    display: none !important;
+  }
+
+  .login-panel {
+    flex: none;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+  }
+
+  .login-panel form input.form-control,
+  .login-panel form input {
+    height: 44px !important;
+    border-radius: 22px !important;
+    font-size: 13px !important;
+  }
+
+  .login-panel form button[type="submit"],
+  .login-panel .btn-submit {
+    height: 44px !important;
+    border-radius: 22px !important;
+    font-size: 15px !important;
+  }
+
+  html.dark-mode .login-panel h1 .log-word,
+  html.dark-mode .login-panel h1 .reset-word {
+    color: var(--mobile-dark-log) !important;
+  }
+
+  html.dark-mode .login-panel form input.form-control,
+  html.dark-mode .login-panel form input {
+    background-color: rgba(15, 40, 30, 0.7) !important;
+    border: 1px solid rgba(43, 182, 115, 0.3) !important;
+    color: #ffffff !important;
+  }
+
+  html.dark-mode .login-panel form input::placeholder {
+    color: #FFFAFA !important;
+  }
+
+  html.light-mode .login-panel h1 .log-word,
+  html.light-mode .login-panel h1 .reset-word {
+    color: var(--mobile-light-log) !important;
+  }
+
+  html.light-mode .login-panel form input.form-control,
+  html.light-mode .login-panel form input {
+    background-color: #ffffff !important;
+    border: 1px solid #2bb673 !important;
+    color: #0d1b17 !important;
+  }
+
+  html.light-mode .login-panel form input::placeholder {
+    color: #707070 !important;
+  }
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color, #0d1b17);
+  z-index: 99999;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.loading-overlay.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+.loader-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+html.dark-mode .loader-bg.bg-dark { opacity: 1; }
+html.dark-mode .loader-bg.bg-light { opacity: 0; }
+html.light-mode .loader-bg.bg-dark { opacity: 0; }
+html.light-mode .loader-bg.bg-light { opacity: 1; }
+
+.loading-content {
+  position: relative;
+  z-index: 2;
+}
+
+.svg-spinner {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+}
+
+.svg-spinner .dot {
+  fill: #2bb673;
+  animation: svgDotFade 1.2s infinite ease-in-out;
+}
+
+.svg-spinner .dot-1 { animation-delay: -1.1s; }
+.svg-spinner .dot-2 { animation-delay: -1.0s; }
+.svg-spinner .dot-3 { animation-delay: -0.9s; }
+.svg-spinner .dot-4 { animation-delay: -0.8s; }
+.svg-spinner .dot-5 { animation-delay: -0.7s; }
+.svg-spinner .dot-6 { animation-delay: -0.6s; }
+.svg-spinner .dot-7 { animation-delay: -0.5s; }
+.svg-spinner .dot-8 { animation-delay: -0.4s; }
+.svg-spinner .dot-9 { animation-delay: -0.3s; }
+.svg-spinner .dot-10 { animation-delay: -0.2s; }
+.svg-spinner .dot-11 { animation-delay: -0.1s; }
+.svg-spinner .dot-12 { animation-delay: 0s; }
+
+@keyframes svgDotFade {
+  0%, 100% { opacity: 0.15; }
+  25% { opacity: 1; }
+}
+
+.loading-title {
+  font-size: 26px;
+  color: #2bb673;
+  text-shadow: 0 0 12px rgba(43, 182, 115, 0.3);
+}
+
+.loading-subtitle {
+  font-size: 14px;
+  color: var(--text-color, #FFFAFA);
+}
+
+/* Icon colors */
+html.dark-mode .input-icon {
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+}
+
+html.light-mode .input-icon {
+  filter: none !important;
+  opacity: 0.7 !important;
+}
+
+html.dark-mode .toggle-password img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+}
+
+html.light-mode .toggle-password img {
+  filter: none !important;
+  opacity: 0.7 !important;
+}
+
+html.dark-mode .toggle-password:hover img {
+  opacity: 0.85 !important;
+}

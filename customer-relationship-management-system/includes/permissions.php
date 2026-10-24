@@ -1,0 +1,1 @@
+// Define the pages each role can access.
